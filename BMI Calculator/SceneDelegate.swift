@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  BMI Calculator
 //
-//  Created by Tony Alhwayek on December 25, 2022
+//  Created by Tony Alhwayek on 12/27/22.
 //
 
 import UIKit

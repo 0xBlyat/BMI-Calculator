@@ -2,12 +2,12 @@
 //  ViewController.swift
 //  BMI Calculator
 //
-//  Created by Tony Alhwayek on December 25, 2022
+//  Created by Tony Alhwayek on 12/27/22.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculateViewController: UIViewController {
 
     @IBOutlet var heightSlider: UISlider!
     @IBOutlet var weightSlider: UISlider!
@@ -15,9 +15,10 @@ class ViewController: UIViewController {
     @IBOutlet var heightLabel: UILabel!
     @IBOutlet var weightLabel: UILabel!
     
+    var bmiValue = "0.0"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func heightSliderChanged(_ sender: UISlider) {
@@ -32,8 +33,18 @@ class ViewController: UIViewController {
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         // BMI = weight / height ^ 2
-        let BMI = weightSlider.value / (pow(heightSlider.value, 2))
+        let BMI = (weightSlider.value / (pow(heightSlider.value, 2)))
         print(BMI)
+        bmiValue = String(format: "%.1f", BMI)
+        
+        self.performSegue(withIdentifier: "goToResult", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResult" {
+            let destinationVC = segue.destination as! ResultViewController
+            destinationVC.bmiValue = bmiValue
+        }
     }
     
 }
