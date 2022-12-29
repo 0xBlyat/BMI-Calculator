@@ -38,12 +38,16 @@ class CalculateViewController: UIViewController {
         let height = heightSlider.value
         calculatorBrain.calculateBMI(height: height, weight: weight)
         
+        
         self.performSegue(withIdentifier: "goToResult", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult" {
+            // Set destinationVC as destination of the segue
             let destinationVC = segue.destination as! ResultViewController
+            
+            // Send BMIValue, advice text and background color to ResultViewController
             destinationVC.bmiValue = calculatorBrain.getBMIValue()
             destinationVC.advice = calculatorBrain.getAdvice()
             destinationVC.color = calculatorBrain.getColor()

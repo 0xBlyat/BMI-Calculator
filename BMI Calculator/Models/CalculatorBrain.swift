@@ -16,6 +16,7 @@ struct CalculatorBrain {
         
         print(bmiValue)
         
+        // Change advice text and background color based on passed BMI value
         if (bmiValue < 18.5) {
             BMI = BMIstruct(value: bmiValue, advice: "Eat more burgers", color: UIColor(red: 111/255, green: 217/255, blue: 249/255, alpha: 1))
         } else if (bmiValue <= 24.9) {

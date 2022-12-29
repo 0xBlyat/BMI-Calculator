@@ -25,7 +25,7 @@ class ResultViewController: UIViewController {
         view.backgroundColor = color
     }
     
-
+    // Recalculate button dismisses the segue
     @IBAction func recalculatePressed(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
